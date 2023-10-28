@@ -9,6 +9,7 @@
 </head>
 <body>
 @include('includes.nav')
+@yield('content')
     
 </body>
 </html>

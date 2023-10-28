@@ -15,6 +15,6 @@ use App\Http\Controllers\GroupController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 Route::resource('/groups', GroupController::class);
