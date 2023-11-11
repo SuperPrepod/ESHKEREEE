@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Group;
 
 class GroupController extends Controller
 {
@@ -11,7 +12,9 @@ class GroupController extends Controller
      */
     public function index()
     {
-        return view('groups.index');
+        $groups = Group::all();
+
+        return view('groups.index', compact('groups'));
     }
 
     /**
@@ -19,7 +22,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        return view ("groups.create");
     }
 
     /**
@@ -35,7 +38,8 @@ class GroupController extends Controller
      */
     public function show(string $id)
     {
-        return "kdkk";
+        $group = Group::findOrFail($id)->load("students");
+        return view("groups.show", compact("group"));
     }
 
     /**

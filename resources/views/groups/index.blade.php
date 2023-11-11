@@ -2,6 +2,10 @@
 
 @section('title','Группы')
 @section('content')
+
+
+
+
 <table class="table">
   <thead>
     <tr>
@@ -11,11 +15,12 @@
     </tr>
   </thead>
   <tbody>
+  @foreach($groups as $group)
     <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
+        <th scope="row">{{ $group->id }}</th>
+        <td>{{ $group->name }}</td>
         <td>
-            <a href="{{ route('groups.show', 1) }}">
+            <a href="{{ route('groups.show', $group->id) }}">
                 <button type="button" class="btn btn-primary">Просмотреть</button>
             </a>
         <button type="button" class="btn btn-danger">Удалить</button>
@@ -23,7 +28,13 @@
         </td>
       
     </tr>
+    @endforeach
+
     
   </tbody>
 </table>
+<a href="{{ route('groups.create' ) }}">
+                <button type="button" class="btn btn-primary">Create</button>
+            </a>
+
 @endsection
