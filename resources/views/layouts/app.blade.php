@@ -9,6 +9,7 @@
 </head>
 <body>
 @include('includes.nav')
+@include('includes.table')
     
 </body>
 </html>
