@@ -9,7 +9,8 @@
 </head>
 <body>
 @include('includes.nav')
-@include('includes.table')
+<!-- @include('includes.table') -->
+@yield('content')
     
 </body>
 </html>
