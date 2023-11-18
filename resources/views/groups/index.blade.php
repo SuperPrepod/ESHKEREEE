@@ -23,9 +23,17 @@
             <a href="{{ route('groups.show', $group->id) }}">
                 <button type="button" class="btn btn-primary">Просмотреть</button>
             </a>
-        <button type="button" class="btn btn-danger">Удалить</button>
-        <button type="button" class="btn btn-secondary">Редактировать</button>
+            
+        <a href="{{ route('groups.edit', $group->id) }}">
+                <button type="button" class="btn btn-secondary">Редактировать</button>
+        </a>
+        <form action="{{ route('groups.destroy', $group->id)}}" method='post'>
+              @csrf
+              @method("delete")
+              <button type="submit" class="btn btn-danger">Удалить</button>
+            </form>
         </td>
+
       
     </tr>
     @endforeach

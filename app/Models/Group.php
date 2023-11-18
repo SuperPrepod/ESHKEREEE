@@ -11,6 +11,8 @@ class Group extends Model
 {
     use HasFactory;
 
+    public $fillable=["name", 'leader'];
+
     public function students(): HasMany
     {
         return $this->hasMany(Student::class,'group_id');

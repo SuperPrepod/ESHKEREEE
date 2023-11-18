@@ -30,7 +30,10 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        Group::create(['name' => $request->name,
+                        'leader'=>$request->leader]);
+        return redirect()->route("groups.index");
     }
 
     /**
@@ -39,14 +42,16 @@ class GroupController extends Controller
     public function show(string $id)
     {
         $group = Group::findOrFail($id)->load("students");
+        // /dd($group->students);позволяет посмотреть содержимое переменной 
         return view("groups.show", compact("group"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Group $group)
     {
+        return view("groups.edit", compact("group"));
         //
     }
 
@@ -61,8 +66,10 @@ class GroupController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Group $group)
     {
+        $group->delete();
+        return redirect()->route("groups.index");
         //
     }
 }
