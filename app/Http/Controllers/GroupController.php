@@ -46,6 +46,8 @@ class GroupController extends Controller
         return view("groups.show", compact("group"));
     }
 
+    
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -58,12 +60,18 @@ class GroupController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    public function update(Request $request, Group $group)
 
-    /**
+    {
+        //dd($request->all());
+        $group->name = $request->name;
+        $group->leader = $request->leader;
+        $group->save();
+        return redirect()->route("groups.index");
+        
+    }                       
+
+    /** 
      * Remove the specified resource from storage.
      */
     public function destroy(Group $group)

@@ -44,5 +44,6 @@
 <a href="{{ route('groups.create' ) }}">
                 <button type="button" class="btn btn-primary">Create</button>
             </a>
+          
 
 @endsection
